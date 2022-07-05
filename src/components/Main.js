@@ -2,6 +2,7 @@ import Footer from "./Footer.styled";
 import Modal from "./Modal.styled";
 import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Sticker from "./Stiker.styled";
 
 const Main = (props) => {
   const isShowModal = useSelector((state) => state.modal.showModal);
@@ -10,7 +11,9 @@ const Main = (props) => {
     <main className={props.className}>
       <div className="main-components">
         <div>
-          <section className="container" id="container"></section>
+          <section className="container" id="container">
+            <Sticker />
+          </section>
           <section className="section-popup">
             {isShowModal && (
               <Route path="/modal" exact>

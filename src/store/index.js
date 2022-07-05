@@ -8,7 +8,6 @@ const modalSlice = createSlice({
   reducers: {
     toggleModal(state) {
       state.showModal = !state.showModal;
-      console.log(state, "printing from store");
     },
   },
 });

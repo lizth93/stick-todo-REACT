@@ -12,8 +12,6 @@ const NavigationHeader = (props) => {
 
   const handleClickAddNew = () => {
     dispatch(modalActions.toggleModal());
-    // setModalAddNew(true);
-    // props.onStateModalPopup(modalAddNew);
   };
 
   return (

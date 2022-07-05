@@ -1,3 +1,5 @@
+import ButtonDelete from "./ButtonDelete";
+
 const StickerOnTrash = (props) => {
   return (
     <div className={props.className} draggable="true" id="">
@@ -16,17 +18,7 @@ const StickerOnTrash = (props) => {
           </button>
         </div>
         <div>
-          <button className="btn-box btn-icon-delete" draggable="false">
-            <svg
-              className="icon-stick icon-delete-svg icon-stick-delete"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path d="M23 20.168l-8.185-8.187 8.185-8.174-2.832-2.807-8.182 8.179-8.176-8.179-2.81 2.81 8.186 8.196-8.186 8.184 2.81 2.81 8.203-8.192 8.18 8.192z" />
-            </svg>
-          </button>
+          <ButtonDelete />
         </div>
       </div>
       <span className="text-content"></span>
