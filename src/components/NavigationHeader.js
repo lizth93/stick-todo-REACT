@@ -1,6 +1,6 @@
 import ButtonNavigation from "./ButtonNavigation.styled";
 import IconTrash from "./IconTrash";
-import StickerOnTrash from "./StickerOnTrash";
+import StickerOnTrash from "./StickerOnTrash.styled";
 
 const NavigationHeader = (props) => {
   return (

@@ -1,6 +1,6 @@
 const StickerOnTrash = (props) => {
   return (
-    <div className="box" draggable="true" id="">
+    <div className={props.className} draggable="true" id="">
       <div className="header-stick">
         <div>
           <button className="btn-box icon-return" draggable="false">
