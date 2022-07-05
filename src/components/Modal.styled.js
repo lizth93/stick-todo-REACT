@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import ModuleAddNew from "./ModuleAddNew";
+import Modal from "./Modal";
 import stickersImage from "../img/postit.jpg";
 
-export default styled(ModuleAddNew)`
+export default styled(Modal)`
   height: 100vh;
   width: 100%;
   position: fixed;
@@ -16,6 +16,7 @@ export default styled(ModuleAddNew)`
   transition: all 0.3s;
 
   .modal {
+    transition: all 0.3s;
     &__content {
       display: flex;
       background-image: linear-gradient(to right bottom, #c3fae8, #e6fcf5);
@@ -30,10 +31,11 @@ export default styled(ModuleAddNew)`
       background-color: #fff;
       box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
       border-radius: 3px;
+
       /* transform: translate(-50%, -50%) scale(0.25); */
-      transition: all 0.5s 0.2s;
-      /* overflow: hidden;
-      opacity: 0; */
+
+      overflow: hidden;
+      /* opacity: 0; */
     }
 
     &__right {

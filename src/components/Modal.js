@@ -1,16 +1,30 @@
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import Button from "./Button.styled";
+import { modalActions } from "../store/index";
+
 const ModuleAddNew = (props) => {
+  const dispatch = useDispatch();
+
+  const handleShowModal = () => {
+    dispatch(modalActions.toggleModal());
+  };
+
   return (
     <form className={props.className} id="modal">
       <div className="modal__content">
         <div className="modal-img-box" role="img"></div>
         <div className="modal__right">
-          <a href="/container" className="modal__close">
+          <Link
+            to="/container"
+            className="modal__close"
+            onClick={handleShowModal}
+          >
             &times;
-          </a>
-          <h2 className="u-margin-bottom-small">Add the Sticky</h2>
+          </Link>
+          <h2 className="u-margin-bottom-small">{props.title}</h2>
           <div className="modal__flex">
-            <label className="id-number">idHigest put here</label>
+            <label className="id-number">{props.id}</label>
             <div>
               <label htmlFor="create-text" className="create-text">
                 Input the text
@@ -39,7 +53,9 @@ const ModuleAddNew = (props) => {
               />
             </div>
           </div>
-          <Button className="btn--form modal-button-element">Create</Button>
+          <Button className="btn--form modal-button-element">
+            {props.typeButton}
+          </Button>
         </div>
       </div>
     </form>
