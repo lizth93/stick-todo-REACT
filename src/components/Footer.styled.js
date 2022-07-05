@@ -7,7 +7,7 @@ export default styled(Footer)`
   width: 100%;
   position: absolute;
   bottom: 0;
-  background-color: #0b7285;
+  background-color: #0ca678;
 
   .logo-title {
     display: flex;
@@ -22,6 +22,7 @@ export default styled(Footer)`
   }
   .copyrigth {
     display: flex;
+    font-size: 1.2rem;
     line-height: 1.6rem;
     align-items: center;
     justify-content: center;

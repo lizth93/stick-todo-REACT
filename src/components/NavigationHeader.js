@@ -1,4 +1,4 @@
-import ButtonNavigation from "./ButtonNavigation.styled";
+import Button from "./Button.styled";
 import IconTrash from "./IconTrash";
 import StickerOnTrash from "./StickerOnTrash.styled";
 
@@ -28,8 +28,12 @@ const NavigationHeader = (props) => {
             <ul className="trash__list">
               <StickerOnTrash></StickerOnTrash>
             </ul>
-            <ButtonNavigation>Restore All</ButtonNavigation>
-            <ButtonNavigation>Delete All</ButtonNavigation>
+            <Button className="btn-trash btn-restore-all -hidden">
+              Restore All
+            </Button>
+            <Button className="btn-trash btn-delete-all -hidden">
+              Delete All
+            </Button>
           </div>
         </li>
       </ul>

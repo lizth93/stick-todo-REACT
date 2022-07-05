@@ -1,32 +1,27 @@
 import styled from "styled-components";
-import ButtonNavigation from "./ButtonNavigation";
+import Button from "./Button";
 
-export default styled(ButtonNavigation)`
-  .btn,
-  .btn:link,
-  .btn:visited {
+export default styled(Button)`
+  .btn {
+    background-color: #0ca678;
+    transition: all 0.2s;
     text-transform: uppercase;
     text-decoration: none;
     padding: 1rem 3rem;
-
     border-radius: 10rem;
-    transition: all 0.2s;
     position: relative;
     font-size: 1.6rem;
     border: none;
     cursor: pointer;
-    background-color: #3bc9db;
+
     margin-top: 2rem;
     color: #fff;
-    text-decoration: none;
-    background-color: #3bc9db;
-    transition: all 0.2s;
   }
 
   .btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-    background-color: #1098ad;
+    background-color: #20c997;
     color: #fff;
   }
   .btn:hover::after {
@@ -39,15 +34,5 @@ export default styled(ButtonNavigation)`
     outline: none;
     transform: translateY(-1px);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-  }
-
-  .btn-restore-all {
-    padding: 1rem 2rem;
-  }
-
-  .btn-box {
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
   }
 `;

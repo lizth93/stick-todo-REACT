@@ -4,7 +4,7 @@ import StickerOnTrash from "./StickerOnTrash";
 export default styled(StickerOnTrash)`
   border: 3px solid white;
   font-size: 1.4rem;
-  background-color: #1098ad;
+  background-color: #0ca678;
   border: 0px solid #fff;
   border-radius: 0.5em;
   padding: 2rem;
@@ -23,7 +23,7 @@ export default styled(StickerOnTrash)`
   }
 
   &.over {
-    border: 3px dotted #1098ad;
+    border: 3px dotted #0ca678;
   }
 
   .header-stick {
@@ -45,12 +45,12 @@ export default styled(StickerOnTrash)`
     stroke: #777;
 
     &:hover {
-      fill: #3bc9db;
+      fill: #20c997;
       transform: scale(1.5);
     }
 
     &:active {
-      fill: #99e9f2;
+      fill: #38d9a9;
       transform: scale(1);
     }
   }
@@ -63,5 +63,54 @@ export default styled(StickerOnTrash)`
     color: #fff;
     letter-spacing: 0.1rem;
     -webkit-text-stroke: 0.4px #333;
+  }
+
+  .btn,
+  .btn:link,
+  .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 3rem;
+
+    border-radius: 10rem;
+    transition: all 0.2s;
+    position: relative;
+    font-size: 1.6rem;
+    border: none;
+    cursor: pointer;
+    background-color: #0ca678;
+    margin-top: 2rem;
+    color: #fff;
+    text-decoration: none;
+    background-color: #0ca678;
+    transition: all 0.2s;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    background-color: #087f5b;
+    color: #fff;
+  }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+  }
+
+  .btn:active,
+  .btn:focus {
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-restore-all {
+    padding: 1rem 2rem;
+  }
+
+  .btn-box {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
   }
 `;

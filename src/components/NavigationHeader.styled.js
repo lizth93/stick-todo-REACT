@@ -16,26 +16,22 @@ export default styled(NavigationHeader)`
     color: #e3fafc;
     justify-content: center;
   }
-
   .main-nav-link:link,
   .main-nav-link:visited {
-    :link,
-    :visited {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      font-size: 1.8rem;
-      text-decoration: none;
-      font-weight: 500;
-      color: #dee2e6;
-      transition: all 0.3s;
-    }
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.8rem;
+    text-decoration: none;
+    font-weight: 500;
+    color: #dee2e6;
+    transition: all 0.3s;
+  }
 
-    :hover,
-    :active {
-      color: #fff;
-    }
+  .main-nav-link:hover,
+  .main-nav-link:active {
+    color: #fff;
   }
 
   .btn-icon-new,
@@ -84,8 +80,8 @@ export default styled(NavigationHeader)`
   }
 
   .btn-icon-smile {
-    fill: #1098ad;
-    stroke: #1098ad;
+    fill: #0ca678;
+    stroke: #0ca678;
     visibility: visible;
     opacity: 1;
     z-index: 20;
@@ -98,5 +94,11 @@ export default styled(NavigationHeader)`
     visibility: hidden;
     opacity: 0;
     display: none;
+  }
+
+  .btn-box {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
   }
 `;
