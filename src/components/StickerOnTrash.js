@@ -2,7 +2,12 @@ import ButtonDelete from "./ButtonDelete";
 
 const StickerOnTrash = (props) => {
   return (
-    <div className={props.className} draggable="true" id="">
+    <div
+      className={props.className}
+      style={{ backgroundColor: props.color }}
+      draggable="true"
+      id={props.id}
+    >
       <div className="header-stick">
         <div>
           <button className="btn-box icon-return" draggable="false">
@@ -21,7 +26,7 @@ const StickerOnTrash = (props) => {
           <ButtonDelete />
         </div>
       </div>
-      <span className="text-content"></span>
+      <span className="text-content">{props.text}</span>
     </div>
   );
 };

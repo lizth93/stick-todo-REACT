@@ -4,6 +4,7 @@ const stickerSlice = createSlice({
   name: "sticker",
   initialState: {
     stickers: [],
+    trashStickers: [],
   },
   reducers: {
     addSticker(state, action) {
@@ -13,8 +14,6 @@ const stickerSlice = createSlice({
         text: newSticker.text,
         color: newSticker.color,
       });
-
-      console.log(newSticker, "from store");
     },
     removeSticker(state, action) {
       const id = action.payload;
@@ -23,6 +22,8 @@ const stickerSlice = createSlice({
       );
 
       if (existingSticker) {
+        state.trashStickers.push(existingSticker);
+
         state.stickers = state.stickers.filter((sticker) => sticker.id !== id);
       }
     },

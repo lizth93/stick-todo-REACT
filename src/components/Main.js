@@ -3,7 +3,7 @@ import Modal from "./Modal.styled";
 import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Sticker from "./Stiker.styled";
-// import { useState } from "react";
+
 import { useDispatch } from "react-redux";
 import { modalActions } from "../store/index";
 import { stickerActions } from "../store/stickerSlice";
