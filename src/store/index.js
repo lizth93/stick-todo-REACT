@@ -1,18 +1,10 @@
-import { createSlice, configureStore } from "@reduxjs/toolkit";
-
-const initialState = { showModal: false };
-
-const modalSlice = createSlice({
-  name: "modalState",
-  initialState,
-  reducers: {
-    toggleModal(state) {
-      state.showModal = !state.showModal;
-    },
-  },
-});
+import { configureStore } from "@reduxjs/toolkit";
+import modalSlice from "./modalSlice.js";
+import stickerSlice from "./stickerSlice.js";
 
 export const modalActions = modalSlice.actions;
-const store = configureStore({ reducer: { modal: modalSlice.reducer } });
+const store = configureStore({
+  reducer: { modal: modalSlice.reducer, stickerItems: stickerSlice.reducer },
+});
 
 export default store;

@@ -41,7 +41,7 @@ const ModuleAddNew = (props) => {
             </Link>
             <h2 className="u-margin-bottom-small">{props.title}</h2>
             <div className="modal__flex">
-              {/* <label className="id-number">{props.id}</label> */}
+              <label className="id-number">{props.id}</label>
               <div>
                 <label htmlFor="create-text" className="create-text">
                   Input the text

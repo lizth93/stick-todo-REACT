@@ -3,24 +3,32 @@ import Modal from "./Modal.styled";
 import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Sticker from "./Stiker.styled";
-import { useState } from "react";
+// import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { modalActions } from "../store/index";
+import { stickerActions } from "../store/stickerSlice";
 
 const Main = (props) => {
-  let isShowModal = useSelector((state) => state.modal.showModal);
+  const isShowModal = useSelector((state) => state.modal.showModal);
+  const stickers = useSelector((state) => state.stickerItems.stickers);
   const dispatch = useDispatch();
-  const [stickers, setStickers] = useState([]);
+
+  // const [stickers, setStickers] = useState([]);
+  const id = Math.random().toString();
 
   const handleAddSticker = (text, color) => {
-    setStickers((prevStickers) => {
-      return [
-        ...prevStickers,
-        { text: text, color: color, id: Math.random().toString() },
-      ];
-    });
+    // setStickers((prevStickers) => {
+    //   return [...prevStickers, { text, color, id }];
+    // });
 
     dispatch(modalActions.toggleModal());
+    dispatch(
+      stickerActions.addSticker({
+        text,
+        color,
+        id,
+      })
+    );
   };
 
   return (
@@ -31,6 +39,7 @@ const Main = (props) => {
             {stickers.map((sticker) => (
               <Sticker
                 key={sticker.id}
+                id={sticker.id}
                 text={sticker.text}
                 color={sticker.color}
               />
@@ -43,6 +52,7 @@ const Main = (props) => {
                   title="Add new Sticker"
                   typeButton="Create"
                   onAddSticker={handleAddSticker}
+                  id={id}
                 />
               </Route>
             )}
