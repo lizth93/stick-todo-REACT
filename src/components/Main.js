@@ -13,14 +13,9 @@ const Main = (props) => {
   const stickers = useSelector((state) => state.stickerItems.stickers);
   const dispatch = useDispatch();
 
-  // const [stickers, setStickers] = useState([]);
   const id = Math.random().toString();
 
   const handleAddSticker = (text, color) => {
-    // setStickers((prevStickers) => {
-    //   return [...prevStickers, { text, color, id }];
-    // });
-
     dispatch(modalActions.toggleModal());
     dispatch(
       stickerActions.addSticker({

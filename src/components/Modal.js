@@ -22,13 +22,13 @@ const ModuleAddNew = (props) => {
     setText(ev.target.value);
   };
 
-  const addStickerHandle = (ev) => {
+  const handleAddSticker = (ev) => {
     ev.preventDefault();
     props.onAddSticker(text, color);
   };
   return (
     <div>
-      <form className={props.className} id="modal" onSubmit={addStickerHandle}>
+      <form className={props.className} id="modal" onSubmit={handleAddSticker}>
         <div className="modal__content">
           <div className="modal-img-box" role="img"></div>
           <div className="modal__right">

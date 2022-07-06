@@ -1,7 +1,14 @@
 import ButtonDelete from "./ButtonDelete";
+import { useDispatch } from "react-redux";
+import { stickerActions } from "../store/stickerSlice";
 
 const Sticker = (props) => {
+  const dispatch = useDispatch();
   const color = props.color;
+
+  const handleDeleteSticker = () => {
+    dispatch(stickerActions.removeSticker(props.id));
+  };
 
   return (
     <div
@@ -25,7 +32,7 @@ const Sticker = (props) => {
           </button>
         </div>
         <div className="icon-deleted">
-          <ButtonDelete />
+          <ButtonDelete onClick={handleDeleteSticker} />
         </div>
       </header>
       <span className="text-content">{props.text}</span>

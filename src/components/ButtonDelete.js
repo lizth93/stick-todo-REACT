@@ -1,6 +1,10 @@
-const ButtonDelete = () => {
+const ButtonDelete = (props) => {
   return (
-    <button className="btn-box icon-delete" draggable="false">
+    <button
+      className="btn-box icon-delete"
+      draggable="false"
+      onClick={props.onClick}
+    >
       <svg
         className="icon-stick icon-stick-delete"
         xmlns="http://www.w3.org/2000/svg"
