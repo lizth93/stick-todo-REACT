@@ -90,12 +90,6 @@ export default styled(NavigationHeader)`
     list-style: none;
   }
 
-  .hidden {
-    visibility: hidden;
-    opacity: 0;
-    display: none;
-  }
-
   .btn-box {
     border: none;
     cursor: pointer;

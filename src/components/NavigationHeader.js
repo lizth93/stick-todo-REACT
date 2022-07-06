@@ -1,12 +1,12 @@
-import Button from "./Button.styled";
 import IconTrash from "./IconTrash";
 import StickerOnTrash from "./StickerOnTrash.styled";
 import { Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { modalActions } from "../store/index";
 import { useSelector } from "react-redux";
-
 import { useDispatch } from "react-redux";
+import ButtonsOnTrash from "./ButtonsOnTrash";
+import EmptyIndicatorTrash from "./EmptyIndicatorTrash";
 
 const NavigationHeader = (props) => {
   const stickersOnTrash = useSelector(
@@ -18,6 +18,7 @@ const NavigationHeader = (props) => {
     dispatch(modalActions.toggleModal());
   };
 
+  console.log(stickersOnTrash, "stickersOnTrash.length !== 0");
   return (
     <nav className={props.className}>
       <ul className="navigation__list">
@@ -56,12 +57,11 @@ const NavigationHeader = (props) => {
                 />
               ))}
             </ul>
-            <Button className="btn-trash btn-restore-all -hidden">
-              Restore All
-            </Button>
-            <Button className="btn-trash btn-delete-all -hidden">
-              Delete All
-            </Button>
+            {stickersOnTrash.length === 0 ? (
+              <EmptyIndicatorTrash />
+            ) : (
+              <ButtonsOnTrash />
+            )}
           </div>
         </li>
       </ul>
