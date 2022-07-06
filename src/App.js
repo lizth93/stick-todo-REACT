@@ -2,10 +2,7 @@ import "./App.css";
 import Header from "./components/Header.styled";
 import Main from "./components/Main.styled";
 
-function App(props) {
-  // const stateModal = props.stateModal;
-  // console.log(stateModal, "from app");
-
+function App() {
   return (
     <div className="App">
       <Header />

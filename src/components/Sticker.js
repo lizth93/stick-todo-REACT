@@ -1,13 +1,14 @@
 import ButtonDelete from "./ButtonDelete";
 
 const Sticker = (props) => {
+  const color = props.color;
+
   return (
     <div
-      // dataColor="${stick.color}"
-      // style="background-color:${stick.color}"
       className={props.className}
+      style={{ backgroundColor: color }}
       draggable="true"
-      id="1"
+      id={props.id}
     >
       <header className="header-stick">
         <div className="icon-edit">
@@ -27,7 +28,7 @@ const Sticker = (props) => {
           <ButtonDelete />
         </div>
       </header>
-      <span className="text-content">content Value</span>
+      <span className="text-content">{props.text}</span>
     </div>
   );
 };
