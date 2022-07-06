@@ -1,4 +1,5 @@
 import IconTrash from "./IconTrash";
+import IconTrashEmpty from "./IconTrashEmpty";
 import StickerOnTrash from "./StickerOnTrash.styled";
 import { Route } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -44,7 +45,7 @@ const NavigationHeader = (props) => {
         </li>
         <li className="navigation__item">
           <Link className="main-nav-link nav__btn--trash" to="/">
-            <IconTrash />
+            {stickersOnTrash.length === 0 ? <IconTrashEmpty /> : <IconTrash />}
           </Link>
           <div className="trash">
             <ul className="trash__list">

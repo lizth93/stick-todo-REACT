@@ -27,6 +27,26 @@ const stickerSlice = createSlice({
         state.stickers = state.stickers.filter((sticker) => sticker.id !== id);
       }
     },
+
+    restoreSticker(state, action) {
+      const id = action.payload;
+      const stickerOnTrash = state.trashStickers.find(
+        (sticker) => sticker.id === id
+      );
+
+      if (stickerOnTrash) {
+        state.stickers.push(stickerOnTrash);
+
+        state.trashStickers = state.trashStickers.filter(
+          (sticker) => sticker.id !== id
+        );
+      }
+    },
+
+    restoreStickers(state) {
+      state.stickers = state.stickers.concat(state.trashStickers);
+      state.trashStickers = [];
+    },
   },
 });
 

@@ -1,6 +1,15 @@
 import ButtonDelete from "./ButtonDelete";
+import { stickerActions } from "../store/stickerSlice";
+import { useDispatch } from "react-redux";
 
 const StickerOnTrash = (props) => {
+  const dispatch = useDispatch();
+
+  const handleRestoreSticker = () => {
+    console.log("click on restore");
+    dispatch(stickerActions.restoreSticker(props.id));
+  };
+
   return (
     <div
       className={props.className}
@@ -10,7 +19,11 @@ const StickerOnTrash = (props) => {
     >
       <div className="header-stick">
         <div>
-          <button className="btn-box icon-return" draggable="false">
+          <button
+            className="btn-box icon-return"
+            draggable="false"
+            onClick={handleRestoreSticker}
+          >
             <svg
               className="icon-stick icon-stick-return"
               xmlns="http://www.w3.org/2000/svg"
