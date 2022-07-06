@@ -1,14 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const stickerSlice = createSlice({
-  name: "sticker",
+  name: "itemsStickers",
   initialState: {
     stickers: [],
     trashStickers: [],
+    changed: false,
   },
   reducers: {
     addSticker(state, action) {
       const newSticker = action.payload;
+      state.changed = true;
       state.stickers.push({
         id: newSticker.id,
         text: newSticker.text,
@@ -16,6 +18,7 @@ const stickerSlice = createSlice({
       });
     },
     removeSticker(state, action) {
+      state.changed = true;
       const id = action.payload;
       const existingSticker = state.stickers.find(
         (sticker) => sticker.id === id
@@ -29,6 +32,7 @@ const stickerSlice = createSlice({
     },
 
     restoreSticker(state, action) {
+      state.changed = true;
       const id = action.payload;
       const stickerOnTrash = state.trashStickers.find(
         (sticker) => sticker.id === id
@@ -44,6 +48,7 @@ const stickerSlice = createSlice({
     },
 
     restoreStickers(state) {
+      state.changed = true;
       state.stickers = state.stickers.concat(state.trashStickers);
       state.trashStickers = [];
     },

@@ -3,11 +3,11 @@ import IconTrashEmpty from "./IconTrashEmpty";
 import StickerOnTrash from "./StickerOnTrash.styled";
 import { Route } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { modalActions } from "../store/index";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import ButtonsOnTrash from "./ButtonsOnTrash";
 import EmptyIndicatorTrash from "./EmptyIndicatorTrash";
+import { uiActions } from "../store";
 
 const NavigationHeader = (props) => {
   const stickersOnTrash = useSelector(
@@ -16,10 +16,9 @@ const NavigationHeader = (props) => {
   const dispatch = useDispatch();
 
   const handleClickAddNew = () => {
-    dispatch(modalActions.toggleModal());
+    dispatch(uiActions.toggleModal());
   };
 
-  console.log(stickersOnTrash, "stickersOnTrash.length !== 0");
   return (
     <nav className={props.className}>
       <ul className="navigation__list">

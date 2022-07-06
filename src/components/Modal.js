@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "./Button.styled";
-import { modalActions } from "../store/index";
+import { uiActions } from "../store/index";
 import { useState } from "react";
 
 const ModuleAddNew = (props) => {
@@ -11,7 +11,7 @@ const ModuleAddNew = (props) => {
   const dispatch = useDispatch();
 
   const handleShowModal = () => {
-    dispatch(modalActions.toggleModal());
+    dispatch(uiActions.toggleModal());
   };
 
   const handleOnChangeColor = (ev) => {

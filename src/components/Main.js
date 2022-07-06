@@ -5,18 +5,19 @@ import { useSelector } from "react-redux";
 import Sticker from "./Stiker.styled";
 
 import { useDispatch } from "react-redux";
-import { modalActions } from "../store/index";
+
+import { uiActions } from "../store/index";
 import { stickerActions } from "../store/stickerSlice";
 
 const Main = (props) => {
-  const isShowModal = useSelector((state) => state.modal.showModal);
+  const isShowModal = useSelector((state) => state.ui.showModal);
   const stickers = useSelector((state) => state.stickerItems.stickers);
   const dispatch = useDispatch();
 
   const id = Math.random().toString();
 
   const handleAddSticker = (text, color) => {
-    dispatch(modalActions.toggleModal());
+    dispatch(uiActions.toggleModal());
     dispatch(
       stickerActions.addSticker({
         text,
