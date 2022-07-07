@@ -8,6 +8,13 @@ const stickerSlice = createSlice({
     changed: false,
   },
   reducers: {
+    setChange(state, action) {
+      state.change = action.payload;
+    },
+    replaceStickers(state, action) {
+      state.stickers = action.payload.stickers;
+      state.trashStickers = action.payload.trashStickers;
+    },
     addSticker(state, action) {
       const newSticker = action.payload;
       state.changed = true;
@@ -17,20 +24,6 @@ const stickerSlice = createSlice({
         color: newSticker.color,
       });
     },
-    removeSticker(state, action) {
-      state.changed = true;
-      const id = action.payload;
-      const existingSticker = state.stickers.find(
-        (sticker) => sticker.id === id
-      );
-
-      if (existingSticker) {
-        state.trashStickers.push(existingSticker);
-
-        state.stickers = state.stickers.filter((sticker) => sticker.id !== id);
-      }
-    },
-
     restoreSticker(state, action) {
       state.changed = true;
       const id = action.payload;

@@ -1,13 +1,13 @@
 import ButtonDelete from "./ButtonDelete";
 import { useDispatch } from "react-redux";
-import { stickerActions } from "../store/stickerSlice";
+import removeSticker from "../store/removeSticker";
 
 const Sticker = (props) => {
   const dispatch = useDispatch();
   const color = props.color;
 
   const handleDeleteSticker = () => {
-    dispatch(stickerActions.removeSticker(props.id));
+    dispatch(removeSticker(props.id));
   };
 
   return (
