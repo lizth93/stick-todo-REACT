@@ -1,8 +1,10 @@
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import Button from "./Button.styled";
-import { uiActions } from "../store/index";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
+//own
+import Button from "../button/Button.styled";
+import { uiActions } from "../../store";
 
 const ModuleAddNew = (props) => {
   const [color, setColor] = useState("#20c997");

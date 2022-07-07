@@ -1,6 +1,7 @@
+//own
 import styled from "styled-components";
 import Modal from "./Modal";
-import stickersImage from "../img/postit.jpg";
+import stickersImage from "./postit.jpg";
 
 export default styled(Modal)`
   height: 100vh;
@@ -11,8 +12,6 @@ export default styled(Modal)`
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 2;
   font-size: 1.5rem;
-  /* opacity: 0;
-  visibility: hidden; */
   transition: all 0.3s;
 
   .modal {

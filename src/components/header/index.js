@@ -1,5 +1,6 @@
+//own
 import NavigationHeader from "./NavigationHeader.styled";
-import Logo from "./Logo.styled";
+import Logo from "../logo/Logo.styled";
 
 const Header = (props) => {
   return (

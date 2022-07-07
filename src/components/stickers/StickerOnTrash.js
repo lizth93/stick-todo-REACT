@@ -1,6 +1,7 @@
-import ButtonDelete from "./ButtonDelete";
-import { stickerActions } from "../store/stickerSlice";
 import { useDispatch } from "react-redux";
+//own
+import ButtonDelete from "../button/ButtonDelete";
+import { stickerActions } from "../../store/stickerSlice";
 
 const StickerOnTrash = (props) => {
   const dispatch = useDispatch();

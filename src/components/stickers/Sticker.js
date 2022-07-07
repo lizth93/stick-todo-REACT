@@ -1,6 +1,8 @@
-import ButtonDelete from "./ButtonDelete";
 import { useDispatch } from "react-redux";
-import removeSticker from "../store/removeSticker";
+
+//own
+import ButtonDelete from "../button/ButtonDelete";
+import removeSticker from "../../store/removeSticker";
 
 const Sticker = (props) => {
   const dispatch = useDispatch();

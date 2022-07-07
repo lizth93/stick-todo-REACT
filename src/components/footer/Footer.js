@@ -1,4 +1,4 @@
-import Logo from "./Logo";
+import Logo from "../logo/Logo";
 
 const Footer = (props) => {
   return (
@@ -13,6 +13,7 @@ const Footer = (props) => {
             className="link-github copyrigth"
             href="https://github.com/lizth93"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <p>
               This website is handmade by Luz Edith Tobar ❤ with JavaScript,

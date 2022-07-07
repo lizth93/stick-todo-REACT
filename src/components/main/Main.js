@@ -1,13 +1,13 @@
-import Footer from "./Footer.styled";
-import Modal from "./Modal.styled";
+import { useDispatch } from "react-redux";
+import { uiActions } from "../../store";
 import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Sticker from "./Stiker.styled";
 
-import { useDispatch } from "react-redux";
-
-import { uiActions } from "../store/index";
-import { stickerActions } from "../store/stickerSlice";
+//own
+import Footer from "../footer/Footer.styled";
+import Modal from "../modal/Modal.styled";
+import Sticker from "../stickers/Stiker.styled";
+import { stickerActions } from "../../store/stickerSlice";
 
 const Main = (props) => {
   const isShowModal = useSelector((state) => state.ui.showModal);

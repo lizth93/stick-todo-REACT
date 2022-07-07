@@ -1,4 +1,4 @@
-import logo from "../img/logo-icon.png";
+import logo from "./logo-icon.png";
 const Logo = (props) => {
   return (
     <a className={props.className} href="/">

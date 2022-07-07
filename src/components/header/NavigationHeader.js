@@ -1,13 +1,14 @@
-import IconTrash from "./IconTrash";
-import IconTrashEmpty from "./IconTrashEmpty";
-import StickerOnTrash from "./StickerOnTrash.styled";
 import { Route } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import ButtonsOnTrash from "./ButtonsOnTrash";
-import EmptyIndicatorTrash from "./EmptyIndicatorTrash";
-import { uiActions } from "../store";
+import { useSelector, useDispatch } from "react-redux";
+
+//own
+import IconTrash from "./icons/IconTrash";
+import IconTrashEmpty from "./icons/IconTrashEmpty";
+import EmptyIndicatorTrash from "./icons/EmptyIndicatorTrash";
+import StickerOnTrash from "../stickers/StickerOnTrash.styled";
+import ButtonsOnTrash from "../button/ButtonsOnTrash";
+import { uiActions } from "../../store";
 
 const NavigationHeader = (props) => {
   const stickersOnTrash = useSelector(

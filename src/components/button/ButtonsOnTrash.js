@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Button from "./Button.styled";
 import { useDispatch } from "react-redux";
-import { stickerActions } from "../store/stickerSlice";
+import { stickerActions } from "../../store/stickerSlice";
 
 const ButtonsOnTrash = () => {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 // Own
-import Header from "../components/Header.styled";
-import Main from "../components/Main.styled";
+import Header from "../components/header/Header.styled";
+import Main from "../components/main/Main.styled";
 import useInitializeStickers from "./useInitializeStickers";
 import useSaveStickers from "./useSaveStickers";
 import "./App.css";
