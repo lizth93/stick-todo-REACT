@@ -58,6 +58,7 @@ const ModuleAddNew = (props) => {
                   placeholder="Type the content"
                   className="create-text-area u-margin-bottom-small"
                   onChange={handleOnChangeText}
+                  value={props.text}
                   required
                 ></textarea>
               </div>

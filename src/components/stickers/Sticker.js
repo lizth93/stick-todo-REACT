@@ -1,15 +1,22 @@
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 //own
 import ButtonDelete from "../button/ButtonDelete";
 import removeSticker from "../../store/removeSticker";
 
 const Sticker = (props) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const color = props.color;
 
   const handleDeleteSticker = () => {
     dispatch(removeSticker(props.id));
+  };
+
+  const handleClickEditSticker = () => {
+    props.onEditSticker();
+    history.push("/modal/edit");
   };
 
   return (
@@ -21,7 +28,11 @@ const Sticker = (props) => {
     >
       <header className="header-stick">
         <div className="icon-edit">
-          <button className="btn-box btn-box-edit" draggable="false">
+          <button
+            className="btn-box btn-box-edit"
+            draggable="false"
+            onClick={handleClickEditSticker}
+          >
             <svg
               className="icon-stick"
               xmlns="http://www.w3.org/2000/svg"

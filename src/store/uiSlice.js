@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { showModal: false, notification: null };
+const initialState = { showModal: false, typeModal: null, notification: null };
 
 const uiSlice = createSlice({
   name: "uiState",
@@ -8,6 +8,10 @@ const uiSlice = createSlice({
   reducers: {
     toggleModal(state) {
       state.showModal = !state.showModal;
+    },
+    setTypeModal(state, action) {
+      state.typeModal = action.payload;
+      console.log(state.typeModal);
     },
     showNotification(state, action) {
       state.notification = {

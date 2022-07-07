@@ -12,6 +12,8 @@ import { stickerActions } from "../../store/stickerSlice";
 const Main = (props) => {
   let isShowModal = useSelector((state) => state.ui.showModal);
   const stickers = useSelector((state) => state.stickerItems.stickers);
+  let typeModal = useSelector((state) => state.ui.typeModal);
+
   const dispatch = useDispatch();
   const id = Math.random().toString();
 
@@ -25,11 +27,41 @@ const Main = (props) => {
       })
     );
   };
+  const handleEditSticker = () => {
+    dispatch(uiActions.setTypeModal("Edit"));
+    dispatch(uiActions.toggleModal());
+  };
+
+  const handleModifySticker = () => {
+    console.log("click on modify button");
+  };
+
+  let typeModalRender = (
+    <Route path="/modal" exact>
+      <Modal
+        title="Add new Sticker"
+        typeButton="Create"
+        onAddSticker={handleAddSticker}
+        id={id}
+      />
+    </Route>
+  );
+
+  if (typeModal === "Edit") {
+    typeModalRender = (
+      <Route path="/modal/edit">
+        <Modal
+          title="Modify Sticker"
+          typeButton="Modify"
+          onSaveModification={handleModifySticker}
+          id={id}
+        />
+      </Route>
+    );
+  }
 
   if ((<Route path="/modal" exact />)) {
     isShowModal = true;
-  } else {
-    isShowModal = false;
   }
 
   return (
@@ -43,21 +75,11 @@ const Main = (props) => {
                 id={sticker.id}
                 text={sticker.text}
                 color={sticker.color}
+                onEditSticker={handleEditSticker}
               />
             ))}
           </section>
-          <section className="section-popup">
-            {isShowModal && (
-              <Route path="/modal" exact>
-                <Modal
-                  title="Add new Sticker"
-                  typeButton="Create"
-                  onAddSticker={handleAddSticker}
-                  id={id}
-                />
-              </Route>
-            )}
-          </section>
+          <section className="section-popup">{typeModalRender}</section>
         </div>
         <div>
           <Footer />

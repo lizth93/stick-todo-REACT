@@ -18,6 +18,7 @@ const NavigationHeader = (props) => {
 
   const handleClickAddNew = () => {
     dispatch(uiActions.toggleModal());
+    dispatch(uiActions.setTypeModal("Add"));
   };
 
   return (
