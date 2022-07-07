@@ -12,31 +12,22 @@ const stickerSlice = createSlice({
       state.change = action.payload;
     },
     replaceStickers(state, action) {
+      state.changed = true;
       state.stickers = action.payload.stickers;
       state.trashStickers = action.payload.trashStickers;
     },
     addSticker(state, action) {
       const newSticker = action.payload;
-      state.changed = true;
-      state.stickers.push({
-        id: newSticker.id,
-        text: newSticker.text,
-        color: newSticker.color,
-      });
-    },
-    restoreSticker(state, action) {
-      state.changed = true;
-      const id = action.payload;
-      const stickerOnTrash = state.trashStickers.find(
-        (sticker) => sticker.id === id
+      const existSticker = state.stickers.find(
+        (sticker) => sticker.id === newSticker.id
       );
-
-      if (stickerOnTrash) {
-        state.stickers.push(stickerOnTrash);
-
-        state.trashStickers = state.trashStickers.filter(
-          (sticker) => sticker.id !== id
-        );
+      state.changed = true;
+      if (!existSticker) {
+        state.stickers.push({
+          id: newSticker.id,
+          text: newSticker.text,
+          color: newSticker.color,
+        });
       }
     },
 

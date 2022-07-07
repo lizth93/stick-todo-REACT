@@ -10,10 +10,9 @@ import Sticker from "../stickers/Stiker.styled";
 import { stickerActions } from "../../store/stickerSlice";
 
 const Main = (props) => {
-  const isShowModal = useSelector((state) => state.ui.showModal);
+  let isShowModal = useSelector((state) => state.ui.showModal);
   const stickers = useSelector((state) => state.stickerItems.stickers);
   const dispatch = useDispatch();
-
   const id = Math.random().toString();
 
   const handleAddSticker = (text, color) => {
@@ -26,6 +25,12 @@ const Main = (props) => {
       })
     );
   };
+
+  if ((<Route path="/modal" exact />)) {
+    isShowModal = true;
+  } else {
+    isShowModal = false;
+  }
 
   return (
     <main className={props.className}>

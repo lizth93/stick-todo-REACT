@@ -1,14 +1,13 @@
 import { useDispatch } from "react-redux";
 //own
 import ButtonDelete from "../button/ButtonDelete";
-import { stickerActions } from "../../store/stickerSlice";
+import restoreSticker from "../../store/restoreSticker";
 
 const StickerOnTrash = (props) => {
   const dispatch = useDispatch();
 
   const handleRestoreSticker = () => {
-    console.log("click on restore");
-    dispatch(stickerActions.restoreSticker(props.id));
+    dispatch(restoreSticker(props.id));
   };
 
   return (

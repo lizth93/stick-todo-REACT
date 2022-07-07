@@ -7,7 +7,6 @@ const ButtonsOnTrash = () => {
   const dispatch = useDispatch();
 
   const handleRestoreStickers = () => {
-    console.log("click on restore all");
     dispatch(stickerActions.restoreStickers());
   };
 

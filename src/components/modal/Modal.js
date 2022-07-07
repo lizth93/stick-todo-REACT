@@ -1,12 +1,14 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 //own
 import Button from "../button/Button.styled";
 import { uiActions } from "../../store";
 
 const ModuleAddNew = (props) => {
+  const history = useHistory();
   const [color, setColor] = useState("#20c997");
   const [text, setText] = useState("");
 
@@ -27,6 +29,7 @@ const ModuleAddNew = (props) => {
   const handleAddSticker = (ev) => {
     ev.preventDefault();
     props.onAddSticker(text, color);
+    history.push("./container");
   };
   return (
     <div>

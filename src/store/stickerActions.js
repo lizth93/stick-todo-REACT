@@ -1,7 +1,8 @@
+import { uiActions } from ".";
 import { stickerActions } from "./stickerSlice";
 
 const linkFirebase =
-  "https://stickers-app-72d0c-default-rtdb.firebaseio.com/sticker.json";
+  "https://stickers-app-72d0c-default-rtdb.firebaseio.com/stickers.json";
 
 export const fetchStickerData = () => {
   return async (dispatch) => {
@@ -18,7 +19,7 @@ export const fetchStickerData = () => {
 
     try {
       const stickerData = await fetchData();
-      console.log(stickerData, "pringing sticker data");
+
       dispatch(
         stickerActions.replaceStickers({
           stickers: stickerData.stickers || [],
@@ -26,29 +27,56 @@ export const fetchStickerData = () => {
         })
       );
     } catch (error) {
-      console.log("error");
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "Error!",
+          message: "Fetching cart data failed!",
+        })
+      );
     }
   };
 };
 
-export const sendRequest = async (stickers) => {
-  const response = await fetch(linkFirebase, {
-    method: "POST",
-    body: JSON.stringify({
-      stickers,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+export const sendStickerData = (stickers) => {
+  console.log(stickers, "printing stickers from sticker actions");
+  return async (dispatch) => {
+    dispatch(
+      uiActions.showNotification({
+        status: "pending",
+        title: "Sending...",
+        message: "Sending sticker data!",
+      })
+    );
 
-  if (!response.ok) {
-    throw new Error("Sending cart data failed.");
-  }
+    const sendRequest = async () => {
+      const response = await fetch(linkFirebase, {
+        method: "PUT",
+        body: JSON.stringify(stickers),
+      });
+      if (!response.ok) {
+        throw new Error("Sending sticker data failed.");
+      }
+    };
 
-  try {
-    await sendRequest();
-  } catch (error) {
-    console.log(error);
-  }
+    try {
+      await sendRequest();
+
+      dispatch(
+        uiActions.showNotification({
+          status: "success",
+          title: "Success!",
+          message: "Sent sticker data successfully!",
+        })
+      );
+    } catch (error) {
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "Error!",
+          message: "Sending sticker data failed!",
+        })
+      );
+    }
+  };
 };
