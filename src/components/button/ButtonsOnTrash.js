@@ -10,6 +10,10 @@ const ButtonsOnTrash = () => {
     dispatch(stickerActions.restoreStickers());
   };
 
+  const handleDestroyStickers = () => {
+    dispatch(stickerActions.destroyStickers());
+  };
+
   return (
     <Fragment>
       <Button
@@ -18,7 +22,12 @@ const ButtonsOnTrash = () => {
       >
         Restore All
       </Button>
-      <Button className="btn-trash btn-delete-all">Delete All</Button>
+      <Button
+        className="btn-trash btn-delete-all"
+        onClick={handleDestroyStickers}
+      >
+        Delete All
+      </Button>
     </Fragment>
   );
 };

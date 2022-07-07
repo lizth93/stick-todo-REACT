@@ -36,6 +36,11 @@ const stickerSlice = createSlice({
       state.stickers = state.stickers.concat(state.trashStickers);
       state.trashStickers = [];
     },
+
+    destroyStickers(state) {
+      state.changed = true;
+      state.trashStickers = [];
+    },
   },
 });
 

@@ -2,12 +2,17 @@ import { useDispatch } from "react-redux";
 //own
 import ButtonDelete from "../button/ButtonDelete";
 import restoreSticker from "../../store/restoreSticker";
+import destroySticker from "../../store/destroySticker";
 
 const StickerOnTrash = (props) => {
   const dispatch = useDispatch();
 
   const handleRestoreSticker = () => {
     dispatch(restoreSticker(props.id));
+  };
+
+  const handleDestritSticker = () => {
+    dispatch(destroySticker(props.id));
   };
 
   return (
@@ -36,7 +41,7 @@ const StickerOnTrash = (props) => {
           </button>
         </div>
         <div>
-          <ButtonDelete />
+          <ButtonDelete onClick={handleDestritSticker} />
         </div>
       </div>
       <span className="text-content">{props.text}</span>

@@ -4,7 +4,7 @@ import Header from "../components/header/Header.styled";
 import Main from "../components/main/Main.styled";
 import useInitializeStickers from "./useInitializeStickers";
 import useSaveStickers from "./useSaveStickers";
-import Notification from "../components/notification/Notification";
+import Notification from "../components/notification/Notification.styled";
 import "./App.css";
 
 function App() {

@@ -7,7 +7,7 @@ export default styled(Notification)`
     height: 3rem;
     background-color: #1a8ed1;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0.5rem 10%;
     align-items: center;
     color: white;
@@ -16,7 +16,7 @@ export default styled(Notification)`
   .notification h2,
   .notification p {
     font-size: 1rem;
-    margin: 0;
+    margin: 0.2rem;
   }
 
   .error {
