@@ -21,37 +21,6 @@ const stickerSlice = createSlice({
       state.stickerToEdit = action.payload;
     },
 
-    addSticker(state, action) {
-      const newSticker = action.payload;
-      const existSticker = state.stickers.find(
-        (sticker) => sticker.id === newSticker.id
-      );
-      state.changed = true;
-      if (!existSticker) {
-        state.stickers.push({
-          id: newSticker.id,
-          text: newSticker.text,
-          color: newSticker.color,
-        });
-      }
-    },
-    modifySticker(state, action) {
-      state.changed = true;
-      const newSticker = action.payload;
-      const indexToSticker = state.stickers.findIndex(
-        (sticker) => sticker.id === newSticker.id
-      );
-
-      console.log("sticker a modifi is on index:", indexToSticker);
-
-      if (indexToSticker) {
-        state.stickers[indexToSticker] = {
-          id: newSticker.id,
-          text: newSticker.text,
-          color: newSticker.color,
-        };
-      }
-    },
     restoreStickers(state) {
       state.changed = true;
       state.stickers = state.stickers.concat(state.trashStickers);

@@ -7,6 +7,8 @@ import Footer from "../footer/Footer.styled";
 import Modal from "../modal/Modal.styled";
 import Sticker from "../stickers/Stiker.styled";
 import { stickerActions } from "../../store/stickerSlice";
+import modifySticker from "../../store/modifySticker";
+import addSticker from "../../store/addSticker";
 
 const Main = (props) => {
   const dispatch = useDispatch();
@@ -24,7 +26,7 @@ const Main = (props) => {
 
   const handleModifySticker = (text, color) => {
     dispatch(
-      stickerActions.modifySticker({
+      modifySticker({
         id: stickerToEdit.id,
         color,
         text,
@@ -36,7 +38,7 @@ const Main = (props) => {
   const handleAddSticker = (text, color) => {
     dispatch(uiActions.toggleModal());
     dispatch(
-      stickerActions.addSticker({
+      addSticker({
         id,
         text,
         color,
