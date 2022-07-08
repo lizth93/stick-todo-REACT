@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import { uiActions } from "../../store";
-import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 //own
@@ -10,58 +9,75 @@ import Sticker from "../stickers/Stiker.styled";
 import { stickerActions } from "../../store/stickerSlice";
 
 const Main = (props) => {
-  let isShowModal = useSelector((state) => state.ui.showModal);
-  const stickers = useSelector((state) => state.stickerItems.stickers);
-  let typeModal = useSelector((state) => state.ui.typeModal);
-
   const dispatch = useDispatch();
+  const { stickers, stickerToEdit, typeModal, showModal } = useSelector(
+    (state) => ({
+      stickers: state.stickerItems.stickers,
+      stickerToEdit: state.stickerItems.stickerToEdit,
+      typeModal: state.ui.typeModal,
+      showModal: state.ui.showModal,
+    })
+  );
+
+  // TODO: delete this and execute it only when is needed
   const id = Math.random().toString();
+
+  const handleModifySticker = (text, color) => {
+    dispatch(
+      stickerActions.modifySticker({
+        id: stickerToEdit.id,
+        color,
+        text,
+      })
+    );
+    dispatch(uiActions.toggleModal());
+  };
 
   const handleAddSticker = (text, color) => {
     dispatch(uiActions.toggleModal());
     dispatch(
       stickerActions.addSticker({
+        id,
         text,
         color,
-        id,
       })
     );
   };
-  const handleEditSticker = () => {
-    dispatch(uiActions.setTypeModal("Edit"));
+
+  const handleEditSticker = (sticker) => {
+    dispatch(stickerActions.setStickerToEdit(sticker));
+    dispatch(uiActions.setTypeModal("edit"));
     dispatch(uiActions.toggleModal());
   };
 
-  const handleModifySticker = () => {
-    console.log("click on modify button");
-  };
+  let modal = null;
 
-  let typeModalRender = (
-    <Route path="/modal" exact>
-      <Modal
-        title="Add new Sticker"
-        typeButton="Create"
-        onAddSticker={handleAddSticker}
-        id={id}
-      />
-    </Route>
-  );
+  if (showModal) {
+    if (typeModal === "add") {
+      modal = (
+        <Modal
+          key={id}
+          title="Add new Sticker"
+          typeButton="Create"
+          onSave={handleAddSticker}
+          id={id}
+        />
+      );
+    }
 
-  if (typeModal === "Edit") {
-    typeModalRender = (
-      <Route path="/modal/edit">
+    if (typeModal === "edit") {
+      modal = (
         <Modal
           title="Modify Sticker"
           typeButton="Modify"
-          onSaveModification={handleModifySticker}
-          id={id}
+          onSave={handleModifySticker}
+          key={stickerToEdit.id}
+          id={stickerToEdit.id}
+          text={stickerToEdit.text}
+          color={stickerToEdit.color}
         />
-      </Route>
-    );
-  }
-
-  if ((<Route path="/modal" exact />)) {
-    isShowModal = true;
+      );
+    }
   }
 
   return (
@@ -75,11 +91,17 @@ const Main = (props) => {
                 id={sticker.id}
                 text={sticker.text}
                 color={sticker.color}
-                onEditSticker={handleEditSticker}
+                onEditSticker={() => {
+                  handleEditSticker({
+                    id: sticker.id,
+                    text: sticker.text,
+                    color: sticker.color,
+                  });
+                }}
               />
             ))}
           </section>
-          <section className="section-popup">{typeModalRender}</section>
+          <section className="section-popup">{modal}</section>
         </div>
         <div>
           <Footer />

@@ -39,7 +39,6 @@ export const fetchStickerData = () => {
 };
 
 export const sendStickerData = (stickers) => {
-  console.log(stickers, "printing stickers from sticker actions");
   return async (dispatch) => {
     dispatch(
       uiActions.showNotification({

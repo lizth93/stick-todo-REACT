@@ -11,7 +11,6 @@ const uiSlice = createSlice({
     },
     setTypeModal(state, action) {
       state.typeModal = action.payload;
-      console.log(state.typeModal);
     },
     showNotification(state, action) {
       state.notification = {

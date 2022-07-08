@@ -65,8 +65,7 @@ export default styled(Modal)`
     transform: translate(-50%, -50%) scale(1);
   }
 
-  .modal__close:link,
-  .modal__close:visited {
+  .modal__close {
     color: #777;
     position: absolute;
     top: 2.5rem;

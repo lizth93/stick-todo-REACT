@@ -1,18 +1,16 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 //own
 import Button from "../button/Button.styled";
 import { uiActions } from "../../store";
 
 const ModuleAddNew = (props) => {
-  const history = useHistory();
-  const [color, setColor] = useState("#20c997");
-  const [text, setText] = useState("");
-
   const dispatch = useDispatch();
+  const [color, setColor] = useState(props.color || "#20c997");
+  const [text, setText] = useState(props.text || "");
+  let typeModal = useSelector((state) => state.ui.typeModal);
 
   const handleShowModal = () => {
     dispatch(uiActions.toggleModal());
@@ -28,22 +26,18 @@ const ModuleAddNew = (props) => {
 
   const handleAddSticker = (ev) => {
     ev.preventDefault();
-    props.onAddSticker(text, color);
-    history.push("./container");
+    props.onSave(text, color);
   };
+
   return (
     <div>
       <form className={props.className} id="modal" onSubmit={handleAddSticker}>
         <div className="modal__content">
           <div className="modal-img-box" role="img"></div>
           <div className="modal__right">
-            <Link
-              to="/container"
-              className="modal__close"
-              onClick={handleShowModal}
-            >
+            <button className="modal__close" onClick={handleShowModal}>
               &times;
-            </Link>
+            </button>
             <h2 className="u-margin-bottom-small">{props.title}</h2>
             <div className="modal__flex">
               <label className="id-number">{props.id}</label>
@@ -58,7 +52,7 @@ const ModuleAddNew = (props) => {
                   placeholder="Type the content"
                   className="create-text-area u-margin-bottom-small"
                   onChange={handleOnChangeText}
-                  value={props.text}
+                  value={text}
                   required
                 ></textarea>
               </div>
