@@ -8,14 +8,11 @@ export default function modifySticker(stickerData) {
       (sticker) => sticker.id === stickerData.id
     );
 
-    console.log("index to modify", indexToSticker);
-    if (indexToSticker) {
-      state.stickers[indexToSticker] = {
-        id: stickerData.id,
-        text: stickerData.text,
-        color: stickerData.color,
-      };
-    }
+    state.stickers[indexToSticker] = {
+      id: stickerData.id,
+      text: stickerData.text,
+      color: stickerData.color,
+    };
 
     console.log("here");
     dispatch(stickerActions.setChange(true));
