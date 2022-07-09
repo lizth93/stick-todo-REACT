@@ -1,22 +1,19 @@
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 
 //own
 import ButtonDelete from "../button/ButtonDelete";
-import removeSticker from "../../store/removeSticker";
+import moveSticker from "../../store/moveSticker";
 
 const Sticker = (props) => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const color = props.color;
 
   const handleDeleteSticker = () => {
-    dispatch(removeSticker(props.id));
+    dispatch(moveSticker(props.id, "stickers", "trashStickers"));
   };
 
   const handleClickEditSticker = () => {
     props.onEditSticker();
-    history.push("/modal/edit");
   };
 
   return (

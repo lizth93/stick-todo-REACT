@@ -14,8 +14,12 @@ const stickerSlice = createSlice({
     },
     replaceStickers(state, action) {
       state.changed = true;
-      state.stickers = action.payload.stickers;
-      state.trashStickers = action.payload.trashStickers;
+      if (action.payload.stickers) {
+        state.stickers = action.payload.stickers;
+      }
+      if (action.payload.trashStickers) {
+        state.trashStickers = action.payload.trashStickers;
+      }
     },
     setStickerToEdit(state, action) {
       state.stickerToEdit = action.payload;

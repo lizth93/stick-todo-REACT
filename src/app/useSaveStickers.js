@@ -10,7 +10,7 @@ export default function useSaveStickers() {
 
   useEffect(() => {
     if (executed.current) {
-      executed.current = false;
+      executed.current = true;
       return;
     }
 

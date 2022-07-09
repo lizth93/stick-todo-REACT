@@ -14,7 +14,6 @@ export default function modifySticker(stickerData) {
       color: stickerData.color,
     };
 
-    console.log("here");
     dispatch(stickerActions.setChange(true));
     dispatch(
       stickerActions.replaceStickers({
