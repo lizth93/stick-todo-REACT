@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { useSelector } from "react-redux";
 
 //own
 import Button from "../button/Button.styled";
@@ -10,7 +9,6 @@ const ModuleAddNew = (props) => {
   const dispatch = useDispatch();
   const [color, setColor] = useState(props.color || "#20c997");
   const [text, setText] = useState(props.text || "");
-  let typeModal = useSelector((state) => state.ui.typeModal);
 
   const handleShowModal = () => {
     dispatch(uiActions.toggleModal());
