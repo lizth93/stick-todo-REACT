@@ -15,15 +15,35 @@ const Sticker = (props) => {
   const handleClickEditSticker = () => {
     props.onEditSticker();
   };
+  const handleDragStart = (e) => {
+    props.onDragStart(e);
+  };
+
+  const handleDragOver = (e) => {
+    props.onDragOver(e);
+  };
+
+  const handleDragEnd = (e) => {
+    props.onDragEnd(e);
+  };
+  const handleDrop = (e) => {
+    props.onDrop(e);
+  };
 
   return (
     <div
       className={props.className}
       style={{ backgroundColor: color }}
+      data-color={color}
+      data-text={props.text}
       draggable="true"
       id={props.id}
+      onDragStart={handleDragStart}
+      onDragOver={handleDragOver}
+      onDragEnd={handleDragEnd}
+      onDrop={handleDrop}
     >
-      <header className="header-stick">
+      <header className="header-stick" draggable="false">
         <div className="icon-edit">
           <button
             className="btn-box btn-box-edit"
