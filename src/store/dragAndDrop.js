@@ -1,20 +1,20 @@
 import { cloneDeep } from "lodash";
 import { stickerActions } from "./stickerSlice";
 
-export default function dragAndDrop(stickerStart, source, stickerEnd) {
+export default function dragAndDrop(stickerStart, stickerEnd) {
   return (dispatch, getState) => {
     const state = cloneDeep(getState().stickerItems);
+    const stickerStart = state.stickerStartMove;
+    const stickerEnd = state.stickerEndMove;
 
     if (stickerEnd === null || stickerEnd.id === "") return;
-    console.log("start", stickerStart, "end", stickerEnd);
-    const stickerIndexStart = state[source].findIndex(
+
+    const stickerIndexStart = state.stickers.findIndex(
       (sticker) => sticker.id === stickerStart.id
     );
-    const stickerIndexEnd = state[source].findIndex(
+    const stickerIndexEnd = state.stickers.findIndex(
       (sticker) => sticker.id === stickerEnd.id
     );
-
-    console.log("index, start:", stickerIndexStart, "end:", stickerIndexEnd);
 
     if (
       stickerIndexStart === -1 ||
@@ -29,10 +29,14 @@ export default function dragAndDrop(stickerStart, source, stickerEnd) {
 
     dispatch(stickerActions.setChange(true));
 
-    const stickersChange = {
-      [source]: state[source],
-    };
+    dispatch(
+      stickerActions.replaceStickers({
+        stickers: state.stickers,
+        trashStickers: state.trashStickers,
+      })
+    );
 
-    dispatch(stickerActions.replaceStickers(stickersChange));
+    dispatch(stickerActions.setStickerMove(null));
+    dispatch(stickerActions.setStickerEnd(null));
   };
 }

@@ -4,7 +4,7 @@ import modifySticker from "../../store/modifySticker";
 import addSticker from "../../store/addSticker";
 import Modal from "../modal/Modal.styled";
 
-const ReturnTypeModal = () => {
+const SelectedModal = () => {
   const { stickerToEdit, typeModal, showModal } = useSelector((state) => ({
     stickers: state.stickerItems.stickers,
     stickerToEdit: state.stickerItems.stickerToEdit,
@@ -39,7 +39,6 @@ const ReturnTypeModal = () => {
     );
   };
 
-  // let modal = null;
   if (showModal) {
     if (typeModal === "add") {
       return (
@@ -69,4 +68,4 @@ const ReturnTypeModal = () => {
   }
 };
 
-export default ReturnTypeModal;
+export default SelectedModal;

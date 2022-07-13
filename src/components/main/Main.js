@@ -6,18 +6,13 @@ import Footer from "../footer/Footer.styled";
 import Sticker from "../stickers/Stiker.styled";
 import { stickerActions } from "../../store/stickerSlice";
 import dragAndDrop from "../../store/dragAndDrop";
-import ReturnTypeModal from "../modal/typeModal";
+import SelectedModal from "../modal/typeModal";
 
 const Main = (props) => {
   const dispatch = useDispatch();
-  const { stickers, stickerStartMove, stickerEndMove } = useSelector(
-    (state) => ({
-      stickers: state.stickerItems.stickers,
-      stickerToEdit: state.stickerItems.stickerToEdit,
-      stickerStartMove: state.stickerItems.stickerStartMove,
-      stickerEndMove: state.stickerItems.stickerEndMove,
-    })
-  );
+  const { stickers } = useSelector((state) => ({
+    stickers: state.stickerItems.stickers,
+  }));
 
   const handleEditSticker = (sticker) => {
     dispatch(stickerActions.setStickerToEdit(sticker));
@@ -44,7 +39,6 @@ const Main = (props) => {
     if (e.preventDefault) {
       e.preventDefault();
     }
-
     return false;
   };
 
@@ -57,6 +51,10 @@ const Main = (props) => {
 
   const handleDragEnd = (e) => {
     e.target.style.opacity = "1";
+    // stickers.forEach(function (x) {
+    //   x.classList.remove("over");
+    //   console.log(stickers, "sticker");
+    // });
   };
 
   const handleDrop = (e) => {
@@ -72,7 +70,7 @@ const Main = (props) => {
       })
     );
 
-    dispatch(dragAndDrop(stickerStartMove, "stickers", stickerEndMove));
+    dispatch(dragAndDrop());
   };
 
   return (
@@ -103,7 +101,7 @@ const Main = (props) => {
             ))}
           </section>
           <section className="section-popup">
-            <ReturnTypeModal />
+            <SelectedModal />
           </section>
         </div>
         <div>
