@@ -7,7 +7,8 @@ const stickerSlice = createSlice({
     trashStickers: [],
     changed: false,
     stickerToEdit: null,
-    // stickerStartMove: null,
+    stickerStartMove: null,
+    stickerEndMove: null,
   },
   reducers: {
     setChange(state, action) {
@@ -37,10 +38,12 @@ const stickerSlice = createSlice({
       state.changed = true;
       state.trashStickers = [];
     },
-    // stickerMove(state, action) {
-    //   state.stickerStartMove = action.payload;
-    //   // console.log(state.stickerStartMove);
-    // },
+    setStickerMove(state, action) {
+      state.stickerStartMove = action.payload;
+    },
+    setStickerEnd(state, action) {
+      state.stickerEndMove = action.payload;
+    },
   },
 });
 

@@ -22,6 +22,12 @@ const Sticker = (props) => {
   const handleDragOver = (e) => {
     props.onDragOver(e);
   };
+  const handleDragEnter = (e) => {
+    props.onDragEnter(e);
+  };
+  const handleDragLeave = (e) => {
+    props.onDragLeave(e);
+  };
 
   const handleDragEnd = (e) => {
     props.onDragEnd(e);
@@ -32,7 +38,7 @@ const Sticker = (props) => {
 
   return (
     <div
-      className={props.className}
+      className={`${props.className}`}
       style={{ backgroundColor: color }}
       data-color={color}
       data-text={props.text}
@@ -40,6 +46,8 @@ const Sticker = (props) => {
       id={props.id}
       onDragStart={handleDragStart}
       onDragOver={handleDragOver}
+      onDragEnter={handleDragEnter}
+      onDragLeave={handleDragLeave}
       onDragEnd={handleDragEnd}
       onDrop={handleDrop}
     >
@@ -61,11 +69,13 @@ const Sticker = (props) => {
             </svg>
           </button>
         </div>
-        <div className="icon-deleted">
+        <div className="icon-deleted" draggable="false">
           <ButtonDelete onClick={handleDeleteSticker} />
         </div>
       </header>
-      <span className="text-content">{props.text}</span>
+      <span className="text-content" draggable="false">
+        {props.text}
+      </span>
     </div>
   );
 };

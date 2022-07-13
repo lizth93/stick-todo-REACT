@@ -1,50 +1,23 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../store";
-import { useSelector } from "react-redux";
 
 //own
 import Footer from "../footer/Footer.styled";
-import Modal from "../modal/Modal.styled";
 import Sticker from "../stickers/Stiker.styled";
 import { stickerActions } from "../../store/stickerSlice";
-import modifySticker from "../../store/modifySticker";
-import addSticker from "../../store/addSticker";
+import dragAndDrop from "../../store/dragAndDrop";
+import ReturnTypeModal from "../modal/typeModal";
 
 const Main = (props) => {
   const dispatch = useDispatch();
-  const { stickers, stickerToEdit, typeModal, showModal, stickerStartMove } =
-    useSelector((state) => ({
+  const { stickers, stickerStartMove, stickerEndMove } = useSelector(
+    (state) => ({
       stickers: state.stickerItems.stickers,
       stickerToEdit: state.stickerItems.stickerToEdit,
-      typeModal: state.ui.typeModal,
-      showModal: state.ui.showModal,
-      // stickerStartMove: state.stickerItems.stickerStartMove,
-    }));
-
-  // TODO: delete this and execute it only when is needed
-  const id = Math.random().toString();
-
-  const handleModifySticker = (text, color) => {
-    dispatch(
-      modifySticker({
-        id: stickerToEdit.id,
-        color,
-        text,
-      })
-    );
-    dispatch(uiActions.toggleModal());
-  };
-
-  const handleAddSticker = (text, color) => {
-    dispatch(uiActions.toggleModal());
-    dispatch(
-      addSticker({
-        id,
-        text,
-        color,
-      })
-    );
-  };
+      stickerStartMove: state.stickerItems.stickerStartMove,
+      stickerEndMove: state.stickerItems.stickerEndMove,
+    })
+  );
 
   const handleEditSticker = (sticker) => {
     dispatch(stickerActions.setStickerToEdit(sticker));
@@ -52,41 +25,19 @@ const Main = (props) => {
     dispatch(uiActions.toggleModal());
   };
 
-  let modal = null;
+  let stickerStartDragged;
 
-  if (showModal) {
-    if (typeModal === "add") {
-      modal = (
-        <Modal
-          key={id}
-          title="Add new Sticker"
-          typeButton="Create"
-          onSave={handleAddSticker}
-          id={id}
-        />
-      );
-    }
-
-    if (typeModal === "edit") {
-      modal = (
-        <Modal
-          title="Modify Sticker"
-          typeButton="Modify"
-          onSave={handleModifySticker}
-          key={stickerToEdit.id}
-          id={stickerToEdit.id}
-          text={stickerToEdit.text}
-          color={stickerToEdit.color}
-        />
-      );
-    }
-  }
-
-  let draggedSticker;
   const handleDragStart = (e) => {
-    draggedSticker = e.target;
-    draggedSticker.style.opacity = "0.4";
-    // dispatch(stickerActions.stickerMove(draggedSticker));
+    stickerStartDragged = e.target;
+    stickerStartDragged.style.opacity = "0.4";
+
+    dispatch(
+      stickerActions.setStickerMove({
+        id: stickerStartDragged.id,
+        text: stickerStartDragged.dataset.text,
+        color: stickerStartDragged.dataset.color,
+      })
+    );
   };
 
   const handleDragOver = (e) => {
@@ -97,27 +48,33 @@ const Main = (props) => {
     return false;
   };
 
+  const handleDragEnter = (e) => {
+    e.target.classList.add("over");
+  };
+  const handleDragLeave = (e) => {
+    e.target.classList.remove("over");
+  };
+
   const handleDragEnd = (e) => {
-    draggedSticker.style.opacity = "1";
+    e.target.style.opacity = "1";
   };
 
   const handleDrop = (e) => {
     e.stopPropagation();
     e.preventDefault();
+    let stickerEnd = e.target;
 
-    let srcColor = draggedSticker.dataset.color;
-    let srcText = draggedSticker.dataset.text;
+    dispatch(
+      stickerActions.setStickerEnd({
+        id: stickerEnd.id,
+        text: stickerEnd.dataset.text,
+        color: stickerEnd.dataset.color,
+      })
+    );
 
-    if (draggedSticker !== e.target) {
-      draggedSticker.innerHTML = e.target.innerHTML;
-      draggedSticker.style.backgroundColor = e.target.dataset.color;
-      draggedSticker.dataset.color = e.target.dataset.color;
-
-      e.target.innerHTML = srcText;
-      e.target.style.backgroundColor = srcColor;
-      e.target.dataset.color = srcColor;
-    }
+    dispatch(dragAndDrop(stickerStartMove, "stickers", stickerEndMove));
   };
+
   return (
     <main className={props.className}>
       <div className="main-components">
@@ -131,6 +88,8 @@ const Main = (props) => {
                 color={sticker.color}
                 onDragStart={handleDragStart}
                 onDragOver={handleDragOver}
+                onDragEnter={handleDragEnter}
+                onDragLeave={handleDragLeave}
                 onDragEnd={handleDragEnd}
                 onDrop={handleDrop}
                 onEditSticker={() => {
@@ -143,7 +102,9 @@ const Main = (props) => {
               />
             ))}
           </section>
-          <section className="section-popup">{modal}</section>
+          <section className="section-popup">
+            <ReturnTypeModal />
+          </section>
         </div>
         <div>
           <Footer />
