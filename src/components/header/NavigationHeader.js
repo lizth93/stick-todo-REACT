@@ -26,11 +26,7 @@ const NavigationHeader = (props) => {
       <ul className="navigation__list">
         <li className="navigation__item navigation__create-new">
           <Route>
-            <Link
-              className="main-nav-link"
-              to="/modal"
-              onClick={handleClickAddNew}
-            >
+            <Link className="main-nav-link" to="/" onClick={handleClickAddNew}>
               <svg
                 width="24"
                 height="24"
