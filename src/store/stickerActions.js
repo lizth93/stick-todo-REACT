@@ -16,6 +16,7 @@ export const fetchStickerData = () => {
 
       return stickerData;
     } catch (error) {
+      if (!stickerData) return;
       dispatch(
         uiActions.showNotification({
           status: "error",
