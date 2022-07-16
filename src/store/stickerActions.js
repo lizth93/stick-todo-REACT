@@ -5,8 +5,10 @@ export const fetchStickerData = () => {
   return (dispatch) => {
     const fetchData = localStorage.getItem("stickers");
 
+    let stickerData;
+
     try {
-      const stickerData = JSON.parse(fetchData);
+      stickerData = JSON.parse(fetchData);
       dispatch(
         stickerActions.replaceStickers({
           stickers: stickerData.stickers || [],
