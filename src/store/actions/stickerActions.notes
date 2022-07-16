@@ -1,35 +1,3 @@
-import { uiActions } from ".";
-import { stickerActions } from "./stickerSlice";
-
-export const fetchStickerData = () => {
-  return (dispatch) => {
-    const fetchData = localStorage.getItem("stickers");
-
-    let stickerData;
-
-    try {
-      stickerData = JSON.parse(fetchData);
-      dispatch(
-        stickerActions.replaceStickers({
-          stickers: stickerData.stickers || [],
-          trashStickers: stickerData.trashStickers || [],
-        })
-      );
-
-      return stickerData;
-    } catch (error) {
-      if (!stickerData) return;
-      dispatch(
-        uiActions.showNotification({
-          status: "error",
-          title: "Error!",
-          message: "Fetching cart data failed!",
-        })
-      );
-    }
-  };
-};
-
 // const linkFirebase =
 //   "https://stickers-app-72d0c-default-rtdb.firebaseio.com/stickers.json";
 
@@ -67,37 +35,6 @@ export const fetchStickerData = () => {
 //   };
 // };
 
-export const setStickersLocalStorage = (stickers) => {
-  return (dispatch) => {
-    try {
-      dispatch(
-        uiActions.showNotification({
-          status: "pending",
-          title: "Sending...",
-          message: "Sending sticker data!",
-        })
-      );
-
-      localStorage.setItem("stickers", JSON.stringify(stickers));
-
-      dispatch(
-        uiActions.showNotification({
-          status: "success",
-          title: "Success!",
-          message: "Sent sticker data successfully!",
-        })
-      );
-    } catch (error) {
-      dispatch(
-        uiActions.showNotification({
-          status: "error",
-          title: "Error!",
-          message: "Sending sticker data failed!",
-        })
-      );
-    }
-  };
-};
 
 // export const sendStickerData = (stickers) => {
 //   return async (dispatch) => {

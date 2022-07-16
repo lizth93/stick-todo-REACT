@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 // import { sendStickerData } from "../store/stickerActions";
 import { useDispatch } from "react-redux/es/exports";
-import { setStickersLocalStorage } from "../store/stickerActions";
+import { setStickers } from "../store/actions/setStickers";
 
 export default function useSaveStickers() {
   const executed = useRef(false);
@@ -16,7 +16,7 @@ export default function useSaveStickers() {
     }
 
     if (stickers.changed) {
-      dispatch(setStickersLocalStorage(stickers));
+      dispatch(setStickers(stickers));
     }
   }, [stickers, dispatch]);
 }
