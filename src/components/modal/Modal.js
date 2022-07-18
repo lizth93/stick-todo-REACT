@@ -27,9 +27,14 @@ const ModuleAddNew = (props) => {
     props.onSave(text, color);
   };
 
+  const handleClickOutSide = () => {
+    dispatch(uiActions.toggleModal());
+  };
+
   return (
-    <div>
-      <form className={props.className} id="modal" onSubmit={handleAddSticker}>
+    <div className={props.className}>
+      <div className="modal__backdrop" onClick={handleClickOutSide} />
+      <form id="modal" onSubmit={handleAddSticker}>
         <div className="modal__content">
           <div className="modal-img-box" role="img"></div>
           <div className="modal__right">
