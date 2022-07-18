@@ -67,10 +67,12 @@ export default styled(Modal)`
 
   .modal__close {
     color: #777;
+    background-color: transparent;
+    border: none;
     position: absolute;
     top: 2.5rem;
     right: 2.5rem;
-    font-size: 3rem;
+    font-size: 4rem;
     text-decoration: none;
     display: inline-block;
     transition: all 0.2s;
