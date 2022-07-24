@@ -16,8 +16,7 @@ const Main = (props) => {
 
   const handleEditSticker = (sticker) => {
     dispatch(stickerActions.setStickerToEdit(sticker));
-    dispatch(uiActions.setTypeModal("edit"));
-    dispatch(uiActions.toggleModal());
+    dispatch(uiActions.openModal({ mode: "edit" }));
   };
 
   let stickerStartDragged;

@@ -9,6 +9,13 @@ const uiSlice = createSlice({
     toggleModal(state) {
       state.showModal = !state.showModal;
     },
+    openModal(state, action) {
+      state.showModal = true;
+      state.typeModal = action.payload.mode;
+    },
+    closeModal(state) {
+      state.showModal = false;
+    },
     setTypeModal(state, action) {
       state.typeModal = action.payload;
     },

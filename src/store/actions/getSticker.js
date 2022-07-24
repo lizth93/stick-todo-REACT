@@ -3,20 +3,15 @@ import { stickerActions } from "../stickerSlice";
 
 export const getSticker = () => {
   return (dispatch) => {
-    let stickersState;
-
     try {
-      stickersState = JSON.parse(localStorage.getItem("stickers"));
+      const stickersState = JSON.parse(localStorage.getItem("stickers"));
       dispatch(
         stickerActions.replaceStickers({
           stickers: stickersState?.stickers || [],
           trashStickers: stickersState?.trashStickers || [],
         })
       );
-
-      return stickersState;
-    } catch (error) {
-      if (!stickersState) return;
+    } catch {
       dispatch(
         uiActions.showNotification({
           status: "error",

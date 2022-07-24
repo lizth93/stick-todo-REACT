@@ -25,10 +25,12 @@ const SelectedModal = () => {
         text,
       })
     );
+    // TODO: Change with actions "openModal" or "closeModal"
     dispatch(uiActions.toggleModal());
   };
 
   const handleAddSticker = (text, color) => {
+    // TODO: Change with actions "openModal" or "closeModal"
     dispatch(uiActions.toggleModal());
     dispatch(
       addSticker({

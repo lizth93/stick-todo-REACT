@@ -10,10 +10,6 @@ const ModuleAddNew = (props) => {
   const [color, setColor] = useState(props.color || "#20c997");
   const [text, setText] = useState(props.text || "");
 
-  const handleShowModal = () => {
-    dispatch(uiActions.toggleModal());
-  };
-
   const handleOnChangeColor = (ev) => {
     setColor(ev.target.value);
   };
@@ -27,18 +23,18 @@ const ModuleAddNew = (props) => {
     props.onSave(text, color);
   };
 
-  const handleClickOutSide = () => {
-    dispatch(uiActions.toggleModal());
+  const closeModal = () => {
+    dispatch(uiActions.closeModal());
   };
 
   return (
     <div className={props.className}>
-      <div className="modal__backdrop" onClick={handleClickOutSide} />
+      <div className="modal__backdrop" onClick={closeModal} />
       <form id="modal" onSubmit={handleAddSticker}>
         <div className="modal__content">
           <div className="modal-img-box" role="img"></div>
           <div className="modal__right">
-            <button className="modal__close" onClick={handleShowModal}>
+            <button className="modal__close" onClick={closeModal}>
               &times;
             </button>
             <h2 className="u-margin-bottom-small">{props.title}</h2>
