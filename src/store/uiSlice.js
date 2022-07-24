@@ -6,9 +6,6 @@ const uiSlice = createSlice({
   name: "uiState",
   initialState,
   reducers: {
-    toggleModal(state) {
-      state.showModal = !state.showModal;
-    },
     openModal(state, action) {
       state.showModal = true;
       state.typeModal = action.payload.mode;

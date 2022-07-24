@@ -26,12 +26,12 @@ const SelectedModal = () => {
       })
     );
     // TODO: Change with actions "openModal" or "closeModal"
-    dispatch(uiActions.toggleModal());
+    dispatch(uiActions.closeModal());
   };
 
   const handleAddSticker = (text, color) => {
     // TODO: Change with actions "openModal" or "closeModal"
-    dispatch(uiActions.toggleModal());
+    // dispatch(uiActions.toggleModal());
     dispatch(
       addSticker({
         id,
@@ -39,6 +39,7 @@ const SelectedModal = () => {
         color,
       })
     );
+    dispatch(uiActions.closeModal());
   };
 
   if (showModal) {
